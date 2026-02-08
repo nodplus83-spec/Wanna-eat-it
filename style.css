@@ -1,0 +1,292 @@
+/* =========================
+   RESET
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+body{
+  font-family:'Poppins',sans-serif;
+  color:white;
+  overflow-x:hidden;
+  background:#120906;
+}
+
+/* =========================
+   CINEMATIC WORLD
+========================= */
+#world{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+}
+
+/* moving gradient */
+#gradient{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, #3b1d12, transparent 40%),
+    radial-gradient(circle at 80% 80%, #000000, transparent 40%),
+    linear-gradient(120deg,#120906,#2b1710,#6a3f28);
+  animation:moveGradient 15s infinite alternate ease-in-out;
+}
+
+@keyframes moveGradient{
+  from{filter:hue-rotate(0deg);}
+  to{filter:hue-rotate(20deg);}
+}
+
+/* soft lights */
+#lights{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center, rgba(255,216,111,.08), transparent 60%);
+}
+
+/* particles placeholder */
+#particles,
+#chocolate-rain{
+  position:absolute;
+  inset:0;
+}
+
+/* =========================
+   EXPERIENCE CONTAINER
+========================= */
+#experience{
+  width:100%;
+}
+
+/* =========================
+   SCENE SYSTEM
+========================= */
+.scene{
+  min-height:100vh;
+  max-width:900px;
+  margin:auto;
+  padding:70px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s ease;
+}
+
+.scene.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* =========================
+   TITLES
+========================= */
+h1,h2{
+  color:#ffd86f;
+  margin-bottom:20px;
+}
+
+/* =========================
+   NEXT BUTTON
+========================= */
+.next{
+  margin-top:30px;
+  padding:12px 28px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ffe259,#ffa751);
+  color:#4e260e;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.next:hover{
+  transform:translateY(-3px) scale(1.05);
+}
+/* =========================
+   GLASS CARD SYSTEM
+========================= */
+.card{
+  background:rgba(255,255,255,.08);
+  padding:22px 26px;
+  margin:12px 0;
+  border-radius:18px;
+  backdrop-filter:blur(14px);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.25);
+  max-width:600px;
+  line-height:1.7;
+  font-weight:500;
+}
+
+/* big intro card */
+.card.big{
+  font-size:1.1rem;
+}
+
+/* =========================
+   SIGNATURE
+========================= */
+.sign{
+  margin-top:25px;
+  font-style:italic;
+  color:#ffd86f;
+  font-weight:600;
+  letter-spacing:.5px;
+}
+
+/* =========================
+   SMALL GAME TEXT / HINT
+========================= */
+.game-hint{
+  margin-top:15px;
+  opacity:.8;
+  font-size:.9rem;
+}
+/* =========================
+   CHOCOLATE GRID
+========================= */
+.choco-grid{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:18px;
+  margin-top:20px;
+}
+
+/* =========================
+   CHOCOLATE BLOCK
+========================= */
+.choco{
+  height:120px;
+  border-radius:14px;
+  padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-weight:600;
+  position:relative;
+  overflow:hidden;
+
+  box-shadow:
+    inset 0 8px 12px rgba(255,255,255,.15),
+    inset 0 -8px 12px rgba(0,0,0,.7),
+    0 10px 25px rgba(0,0,0,.6);
+
+  transition:.3s;
+}
+
+.choco:hover{
+  transform:translateY(-6px) scale(1.05);
+}
+
+/* shine effect */
+.choco::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:50%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.25),transparent);
+  transform:skewX(-20deg);
+}
+
+.choco:hover::after{
+  animation:shine 1s;
+}
+
+@keyframes shine{
+  to{left:150%;}
+}
+
+/* =========================
+   FLAVOURS
+========================= */
+.milk{background:linear-gradient(145deg,#8b5e3c,#5a3825);}
+.dark{background:linear-gradient(145deg,#3a1f16,#140904);}
+.caramel{background:linear-gradient(145deg,#c68b3c,#8b5a1e);}
+.surprise{background:linear-gradient(145deg,#5a3825,#3a2418);}
+
+/* gold chocolate */
+.gold{
+  background:linear-gradient(145deg,#ffd86f,#b8860b);
+  color:#4e260e;
+}
+
+/* big single chocolate */
+.choco.single{
+  max-width:320px;
+  width:100%;
+  margin:auto;
+}
+/* =========================
+   GAME INTRO LOOK
+========================= */
+.game-intro .card{
+  font-weight:600;
+}
+
+/* =========================
+   GAME SECTION STYLE
+========================= */
+.game h2{
+  font-size:2rem;
+  margin-bottom:15px;
+}
+
+/* arena */
+.game-area{
+  width:100%;
+  max-width:340px;
+  min-height:260px;
+  margin-top:20px;
+  border-radius:20px;
+  background:rgba(0,0,0,.35);
+  box-shadow:
+    inset 0 0 20px rgba(0,0,0,.6),
+    0 10px 30px rgba(0,0,0,.5);
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  padding:10px;
+}
+
+/* clickable items inside game */
+.game-area div{
+  width:60px;
+  height:60px;
+  margin:6px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  font-size:20px;
+  background:rgba(255,255,255,.08);
+  transition:.2s;
+}
+
+.game-area div:hover{
+  transform:scale(1.1);
+}
+
+/* =========================
+   ENDING SECTION
+========================= */
+.ending .card{
+  font-size:1.1rem;
+}
